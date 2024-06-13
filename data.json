@@ -1,4 +1,3 @@
-
 {
   "name": "John Doe",
   "age": 30,
@@ -19,5 +18,10 @@
     }
   ],
   "isActive": true,
-  "hobbies": ["reading", "cycling", "traveling"]
+  "hobbies": [
+    "reading",
+    "cycling",
+    "traveling"
+  ],
+  "new_key": "new_value"
 }
