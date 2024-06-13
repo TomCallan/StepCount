@@ -1,1 +1,23 @@
 
+{
+  "name": "John Doe",
+  "age": 30,
+  "email": "johndoe@example.com",
+  "address": {
+    "street": "123 Main St",
+    "city": "Anytown",
+    "postcode": "12345"
+  },
+  "phoneNumbers": [
+    {
+      "type": "home",
+      "number": "01234 567890"
+    },
+    {
+      "type": "work",
+      "number": "09876 543210"
+    }
+  ],
+  "isActive": true,
+  "hobbies": ["reading", "cycling", "traveling"]
+}
