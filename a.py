@@ -91,18 +91,6 @@ with col3:
         csv = convert_df_to_csv(pd.DataFrame(st.session_state.contributions))
         st.download_button(label="Download Data", data=csv, file_name='contributions.csv', mime='text/csv')
 
-# Display pie chart of contributions by person
-if st.session_state.contributions:
-    df = pd.DataFrame(st.session_state.contributions)
-    if not df.empty:
-        df_grouped = df.groupby('name')['number'].sum().reset_index()
-
-        fig, ax = plt.subplots()
-        ax.pie(df_grouped['number'], labels=df_grouped['name'], autopct='%1.1f%%', startangle=90)
-        ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-
-        st.pyplot(fig)
-
 # Display contributions in a table-like format
 if st.session_state.contributions:
     st.write("Contributions:")
