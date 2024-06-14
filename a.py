@@ -7,6 +7,8 @@ import requests
 
 key = st.secrets["key"]
 
+
+
 bin = "https://api.jsonbin.io/v3/b/"+"666cbdf9ad19ca34f8792107"
 
 headers = {
@@ -16,6 +18,7 @@ headers = {
 
 r = requests.get(bin+"/latest", headers=headers)
 data = r.json()
+print(data)
 
 # Load existing data from the file if it exists
 if 'contributions' not in st.session_state:
@@ -25,6 +28,8 @@ if 'contributions' not in st.session_state:
     else:
         st.session_state.contributions = []
         st.session_state.counter = 0
+
+print(data)
 
 # Title of the app
 st.title("Counter App")
@@ -91,6 +96,7 @@ with col3:
         csv = convert_df_to_csv(pd.DataFrame(st.session_state.contributions))
         st.download_button(label="Download Data", data=csv, file_name='contributions.csv', mime='text/csv')
 
+
 # Display contributions in a table-like format
 if st.session_state.contributions:
     st.write("Contributions:")
@@ -115,7 +121,7 @@ if st.session_state.contributions:
         button_type = "Delete" if disable_status else ""
         button_phold = col5.empty()  # create a placeholder
         do_action = button_phold.button(button_type, key=x)
-        if do_action:
+        if do_action & disable_status:
             st.session_state.counter -= row['number']
             st.session_state.contributions = [entry for i, entry in enumerate(st.session_state.contributions) if i != x]
             req=requests.put(bin, headers=headers, json=st.session_state.contributions)
